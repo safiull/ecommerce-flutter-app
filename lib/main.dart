@@ -22,17 +22,49 @@ class MyApp extends StatelessWidget {
 class HomeActivity extends StatelessWidget {
   const HomeActivity({super.key});
 
+  MySnackBar(message, context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message))
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("My Bazar."),
-        titleSpacing: 0,
-        centerTitle: true,
+        titleSpacing: 10,
+        // centerTitle: true,
         toolbarHeight: 50,
         toolbarOpacity: 1,
         elevation: 0,
         backgroundColor: Colors.green,
+        actions: [
+          IconButton(
+            onPressed: () {
+              MySnackBar('I am comment', context);
+            }, 
+            icon: Icon(Icons.comment)
+          ),
+          IconButton(
+            onPressed: () {
+              MySnackBar('I am search', context);
+            }, 
+            icon: Icon(Icons.search)
+          ),
+          IconButton(
+            onPressed: () {
+              MySnackBar('I am settings', context);
+            }, 
+            icon: Icon(Icons.settings)
+          ),
+          IconButton(
+            onPressed: () {
+              MySnackBar('I am email', context);
+            }, 
+            icon: Icon(Icons.email)
+          ),
+        ],
       ),
       body: Text("Hellow world"),
     );
