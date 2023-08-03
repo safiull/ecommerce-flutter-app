@@ -66,7 +66,14 @@ class HomeActivity extends StatelessWidget {
           ),
         ],
       ),
-      body: Text("Hellow world"),
+      floatingActionButton: FloatingActionButton(
+        elevation: 10,
+        child: Icon(Icons.add),
+        backgroundColor: Colors.green,
+        onPressed: () {
+          MySnackBar("I'm from floating action button.", context);
+        },
+      ),
     );
   }
 }
