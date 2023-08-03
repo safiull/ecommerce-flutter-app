@@ -27,6 +27,12 @@ class HomeActivity extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("My Bazar."),
+        titleSpacing: 0,
+        centerTitle: true,
+        toolbarHeight: 50,
+        toolbarOpacity: 1,
+        elevation: 0,
+        backgroundColor: Colors.green,
       ),
       body: Text("Hellow world"),
     );
