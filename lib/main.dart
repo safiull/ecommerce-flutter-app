@@ -102,6 +102,30 @@ class HomeActivity extends StatelessWidget {
           }
         },
       ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            DrawerHeader(
+              child: Text('My Bazar'),
+            ),
+            ListTile(
+              title: Text('Home')
+            ),
+            ListTile(
+              title: Text('Contact')
+            ),
+            ListTile(
+              title: Text('Profile')
+            ),
+            ListTile(
+              title: Text('Email')
+            ),
+            ListTile(
+              title: Text('Phone')
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
