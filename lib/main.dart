@@ -109,11 +109,69 @@ class HomeActivity extends StatelessWidget {
               padding: EdgeInsets.all(0),
               child: UserAccountsDrawerHeader(
                 decoration: BoxDecoration(
-                  color: Colors.black
+                  color: Colors.white
                 ),
-                accountName: Text("Safiull Alam"), 
-                accountEmail: Text('safiullalam9931@gmail.com'),
+                accountName: Text("Safiull Alam", style: TextStyle(color: Colors.black)), 
+                accountEmail: Text('safiullalam9931@gmail.com', style: TextStyle(color: Colors.black)),
                 currentAccountPicture:Image.network('https://img.icons8.com/?size=2x&id=7I3BjCqe9rjG&format=png') ,
+                onDetailsPressed: () {
+                  MySnackBar("I'm from the profile.", context);
+                },
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text('Home'),
+              onTap: () {
+                MySnackBar("I am Home", context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.contact_mail),
+              title: Text('Contact'),
+              onTap: () {
+                MySnackBar("I am Contact", context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text('Profile'),
+              onTap: () {
+                MySnackBar("I am Profile", context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.email),
+              title: Text('Email'),
+              onTap: () {
+                MySnackBar("I am Email", context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.phone),
+              title: Text('Phone'),
+              onTap: () {
+                MySnackBar("I am Phone", context);
+              },
+            ),
+          ],
+        ),
+      ),
+      endDrawer: Drawer(
+        child: ListView(
+          children: [
+            DrawerHeader(
+              padding: EdgeInsets.all(0),
+              child: UserAccountsDrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.white
+                ),
+                accountName: Text("Safiull Alam", style: TextStyle(color: Colors.black)), 
+                accountEmail: Text('safiullalam9931@gmail.com', style: TextStyle(color: Colors.black)),
+                currentAccountPicture:Image.network('https://img.icons8.com/?size=2x&id=7I3BjCqe9rjG&format=png') ,
+                onDetailsPressed: () {
+                  MySnackBar("I'm from the profile.", context);
+                },
               ),
             ),
             ListTile(
