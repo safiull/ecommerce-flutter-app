@@ -28,8 +28,51 @@ class HomeActivity extends StatelessWidget {
     );
   }
 
+  MyAlertDialog(context) {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Expanded(
+          child: AlertDialog(
+            title: Text("Alert!"),
+            content: Text('Are you sure?'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  MySnackBar("Deleted successfully.", context);
+                  Navigator.of(context).pop();
+                }, 
+                child: Text("Yes")
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                }, 
+                child: Text("No")
+              ),
+            ],
+          ),
+        );
+      }
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+
+    ButtonStyle buttonStyle = ElevatedButton.styleFrom(
+      padding: EdgeInsets.all(10),
+      backgroundColor: Colors.green,
+      foregroundColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(40))
+      )
+    );
+
+    ButtonStyle buttonStyle2 = ElevatedButton.styleFrom(
+      minimumSize: Size(double.infinity, 60)
+    );
+    
     return Scaffold(
       appBar: AppBar(
         title: Text("My Bazar."),
@@ -211,6 +254,130 @@ class HomeActivity extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      // This is only text
+      // body: Text('Hello word'),
+      // This is centered image and text in body.
+      // body: Center(
+      //   // child: Text("Hello wrold"),
+      //   child: Image.network('https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?auto=compress&cs=tinysrgb&w=600'),
+      // ),
+      // This is container in body
+      // body: Container(
+      //   height: 300,
+      //   width: 300,
+      //   alignment: Alignment.topCenter,
+      //   // margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
+      //   margin: EdgeInsets.all(30),
+      //   padding: EdgeInsets.all(40),
+      //   decoration: BoxDecoration(
+      //     color: Colors.blue,
+      //     border: Border.all(color: Colors.red, width: 5)
+      //   ),
+      //   child: Image.network('https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?auto=compress&cs=tinysrgb&w=600'),
+      // ),
+
+      // Images in rows
+      
+      // body: Row(
+      //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+      //   children: [
+      //     Container(
+      //       height: 150, 
+      //       width: 150,
+      //       child: Image.network('https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?auto=compress&cs=tinysrgb&w=600'),
+      //     ),
+      //     Container(
+      //       height: 150, 
+      //       width: 150,
+      //       child: Image.network('https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?auto=compress&cs=tinysrgb&w=600'),
+      //     ),
+      //     Container(
+      //       height: 150, 
+      //       width: 150,
+      //       child: Image.network('https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?auto=compress&cs=tinysrgb&w=600'),
+      //     ),
+      //   ],
+      // ),
+
+      // Buttons in rows.
+      // body: Row(
+      //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      //   children: [
+      //     TextButton(
+      //       onPressed: () {
+      //         MySnackBar("I am text button.", context);
+      //       },
+      //       child: Text("Text button.")
+      //     ),
+      //     ElevatedButton(
+      //       onPressed: () {
+      //         MySnackBar("I am elevated button.", context);
+      //       },
+      //       child: Text("Elevated button."),
+      //       style: buttonStyle,
+      //     ),
+      //     OutlinedButton(
+      //       onPressed: () {
+      //         MySnackBar("I am outlined button.", context);
+      //       },
+      //       child: Text("Outlined button.")
+      //     ),
+      //   ],
+      // ),
+
+      // Show alert button and dialog/
+
+      // body: Center(
+      //   child: ElevatedButton(
+      //       onPressed: () {
+      //         MyAlertDialog(context);
+      //       },
+      //       child: Text("Show Alert."),
+      //       style: buttonStyle,
+      //     ),
+      // ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: "First Name",
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: "Last Name",
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: "Email Address",
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: ElevatedButton(
+              onPressed: () {
+                MySnackBar("Submitted successfully.", context);
+              },
+              child: Text("Submit"),
+              style: buttonStyle2,
+            ),
+          ),
+        ],
       ),
     );
   }
