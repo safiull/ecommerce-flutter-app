@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
 }
 
 class HomeActivity extends StatelessWidget {
-  const HomeActivity({super.key});
+  HomeActivity({super.key});
 
   MySnackBar(message, context) {
     ScaffoldMessenger.of(context).showSnackBar(
@@ -56,6 +56,16 @@ class HomeActivity extends StatelessWidget {
       }
     );
   }
+
+  var jsonList = [
+    {"img": "https://images.pexels.com/photos/2156311/pexels-photo-2156311.jpeg?auto=compress&cs=tinysrgb&w=350", "title": "Shakil Vai"},
+    {"img": "https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?auto=compress&cs=tinysrgb&w=350", "title": "Pabel Vai"},
+    {"img": "https://images.pexels.com/photos/2109800/pexels-photo-2109800.jpeg?auto=compress&cs=tinysrgb&w=350", "title": "Subtoto Vai"},
+    {"img": "https://images.pexels.com/photos/2109800/pexels-photo-2109800.jpeg?auto=compress&cs=tinysrgb&w=350", "title": "Arif Vai"},
+    {"img": "https://images.pexels.com/photos/2109800/pexels-photo-2109800.jpeg?auto=compress&cs=tinysrgb&w=350", "title": "Prince Vai"},
+    {"img": "https://images.pexels.com/photos/1145274/pexels-photo-1145274.jpeg?auto=compress&cs=tinysrgb&w=350", "title": "Alif Vai"},
+    {"img": "https://images.pexels.com/photos/2109800/pexels-photo-2109800.jpeg?auto=compress&cs=tinysrgb&w=350", "title": "Jongol Vai Vai"},
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -337,47 +347,90 @@ class HomeActivity extends StatelessWidget {
       //       style: buttonStyle,
       //     ),
       // ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsets.all(10),
-            child: TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: "First Name",
+      // body: Column(
+      //   mainAxisAlignment: MainAxisAlignment.start,
+      //   children: [
+      //     Padding(
+      //       padding: EdgeInsets.all(10),
+      //       child: TextField(
+      //         decoration: InputDecoration(
+      //           border: OutlineInputBorder(),
+      //           labelText: "First Name",
+      //         ),
+      //       ),
+      //     ),
+      //     Padding(
+      //       padding: EdgeInsets.all(10),
+      //       child: TextField(
+      //         decoration: InputDecoration(
+      //           border: OutlineInputBorder(),
+      //           labelText: "Last Name",
+      //         ),
+      //       ),
+      //     ),
+      //     Padding(
+      //       padding: EdgeInsets.all(10),
+      //       child: TextField(
+      //         decoration: InputDecoration(
+      //           border: OutlineInputBorder(),
+      //           labelText: "Email Address",
+      //         ),
+      //       ),
+      //     ),
+      //     Padding(
+      //       padding: EdgeInsets.all(10),
+      //       child: ElevatedButton(
+      //         onPressed: () {
+      //           MySnackBar("Submitted successfully.", context);
+      //         },
+      //         child: Text("Submit"),
+      //         style: buttonStyle2,
+      //       ),
+      //     ),
+      //   ],
+      // ),
+      // body: ListView.builder(
+      //   itemCount: jsonList.length,
+      //   itemBuilder: (context, index) {
+      //     return GestureDetector(
+      //       onTap: () {
+      //         MySnackBar(jsonList[index]['title']!, context);
+      //       },
+      //       child: Container(
+      //         margin: EdgeInsets.all(10),
+      //         width: double.infinity,
+      //         height: 300,
+      //         child: Image.network(
+      //           jsonList[index]['img']!, 
+      //           fit: BoxFit.fill
+      //         ),
+      //       ),
+      //     );
+      //   },
+      // ),
+      body: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 0,
+          childAspectRatio: 1.2
+        ),
+        itemCount: jsonList.length,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onTap: () {
+              MySnackBar(jsonList[index]['title']!, context);
+            },
+            child: Container(
+              margin: EdgeInsets.all(10),
+              width: double.infinity,
+              height: 300,
+              child: Image.network(
+                jsonList[index]['img']!, 
+                fit: BoxFit.fill
               ),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(10),
-            child: TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: "Last Name",
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(10),
-            child: TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: "Email Address",
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(10),
-            child: ElevatedButton(
-              onPressed: () {
-                MySnackBar("Submitted successfully.", context);
-              },
-              child: Text("Submit"),
-              style: buttonStyle2,
-            ),
-          ),
-        ],
+          );
+        },
       ),
     );
   }
